@@ -37,13 +37,12 @@ namespace TraningGenerator.Controllers
             pti.FavoriteTraining = col["FavoriteTraining"];
 
             //Lägg till när vi har fått till beräkningen 
-            //pti.CalculateNewTraining();
+            pti.CalculateNewTraining();
 
             string s = JsonConvert.SerializeObject(pti);
-            HttpContext.Session.SetString("")
+            HttpContext.Session.SetString("ptisession", s);
 
-
-            return View();
+            return View(pti);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

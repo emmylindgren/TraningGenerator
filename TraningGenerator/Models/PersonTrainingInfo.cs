@@ -8,11 +8,13 @@ namespace TraningGenerator.Models
 {
     public class PersonTrainingInfo
     {
+
         [Required]
         [Display (Name ="Namn")]
         public string Name { get; set; }
 
         [Required]
+        [Range(1900, 2021)]
         [Display(Name = "Födelseår")]
         public int YearOfBirth { get; set; }
 
@@ -35,7 +37,7 @@ namespace TraningGenerator.Models
 
         public void CalculateNewTraining()
         {
-            Age = YearOfBirth - DateTime.Now.Year;
+            Age = DateTime.Now.Year - YearOfBirth;
             //lägg till beräkning av ny träning här också! 
 
         }

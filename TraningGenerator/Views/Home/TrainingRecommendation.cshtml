@@ -1,0 +1,53 @@
+﻿@model TraningGenerator.Models.PersonTrainingInfo
+
+@{
+    ViewData["Title"] = "TrainingRecommendation";
+}
+
+<div>
+    <p>Din genererade rutin</p>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YearOfBirth)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.YearOfBirth)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TrainingNow)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TrainingNow)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NewTraining)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NewTraining)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FavoriteTraining)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FavoriteTraining)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Utvärdera din genererade träningsrekommendation (ÄNDRA ACTION HÄR)</a> | <a asp-action="Index">Testa generera igen</a>
+</div>
+<div>
+    
+</div>
