@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
@@ -23,6 +24,13 @@ namespace TraningGenerator.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            List<SelectListItem> trainingList = new List<SelectListItem>();
+            trainingList.Add(new SelectListItem { Text = "Gym", Value = "0" });
+            trainingList.Add(new SelectListItem { Text = "Löpning", Value = "1" });
+            trainingList.Add(new SelectListItem { Text = "Simning", Value = "2" });
+
+            ViewData["traningSelection"] = trainingList;
+
             return View();
         }
 
@@ -38,6 +46,8 @@ namespace TraningGenerator.Controllers
 
             //Lägg till när vi har fått till beräkningen 
             pti.CalculateNewTraining();
+
+            ViewData["nyckel"] = 10; 
 
             string s = JsonConvert.SerializeObject(pti);
             HttpContext.Session.SetString("ptisession", s);
