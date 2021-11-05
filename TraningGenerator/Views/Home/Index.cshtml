@@ -1,7 +1,6 @@
 ﻿@model TraningGenerator.Models.PersonTrainingInfo
 
 @{
-    ViewData["Title"] = "Index";
 
     IEnumerable<SelectListItem> trainingSelection = (IEnumerable<SelectListItem>)ViewData["traningSelection"];
 }
@@ -29,32 +28,13 @@
                 <span asp-validation-for="TrainingNow" class="text-danger"></span>
             </div>
 
-            @*
-        <div class="col-md-10">
-            <label asp-for="TrainingNow" class="control-label"></label>
-            Male
-            @Html.RadioButtonFor(m => m.TrainingNow, "Male")
-            Female
-            @Html.RadioButtonFor(m => m.TrainingNow, "Female")
-            <span asp-validation-for="TrainingNow" class="text-danger"></span>
-        </div>
-
-
-
-            <div class="form-group">
-                <label asp-for="FavoriteTraining" class="control-label"></label>
-                <input asp-for="FavoriteTraining" class="form-control" />
-                <span asp-validation-for="FavoriteTraining" class="text-danger"></span>
-            </div>
-            *@
-
             <div class="form-group">
                 <label asp-for="FavoriteTraining" class="control-label"></label>
                 <br />
                 <span asp-validation-for="FavoriteTraining" class="text-danger"></span>
                 @foreach (SelectListItem item in trainingSelection)
                 {
-                    <input asp-for="FavoriteTraining" type="radio" name="selectedTraning" value="@item.Value"> @item.Text<br />
+                    <input asp-for="FavoriteTraining" type="radio" value="@item.Value"> @item.Text<br />
                 }
             </div>
 

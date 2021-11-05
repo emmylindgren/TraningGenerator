@@ -18,6 +18,7 @@ namespace TraningGenerator.Models
         [Display(Name = "Födelseår")]
         public int YearOfBirth { get; set; }
 
+        [Display(Name = "Ålder")]
         public int Age { get; set; }
 
         [Required]
