@@ -3,6 +3,7 @@
 @{
 
     IEnumerable<SelectListItem> trainingSelection = (IEnumerable<SelectListItem>)ViewData["traningSelection"];
+    IEnumerable<SelectListItem> hoursOfTrainingSelection = (IEnumerable<SelectListItem>)ViewBag.hoursOfTrainingSelection;
 }
 
 <p>Fyll i frågorna nedan om din träning för att generera ditt nya träningsprogram!</p>
@@ -15,17 +16,23 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="YearOfBirth" class="control-label"></label>
-                <input asp-for="YearOfBirth" class="form-control" />
+                @*<input asp-for="YearOfBirth" class="form-control" />*@
+                @Html.DropDownListFor(m => m.YearOfBirth,
+                    new SelectList(Enumerable.Range(DateTime.Now.Year -100, 101).Reverse()), "Välj år")
                 <span asp-validation-for="YearOfBirth" class="text-danger"></span>
             </div>
 
-
             <div class="form-group">
-                <label asp-for="TrainingNow" class="control-label"></label>
-                <input asp-for="TrainingNow" class="form-control" />
-                <span asp-validation-for="TrainingNow" class="text-danger"></span>
+                <label asp-for="HoursOfTrainingNow" class="control-label"></label>
+                <br />
+                @foreach (SelectListItem item in hoursOfTrainingSelection)
+                {
+                    <input asp-for="HoursOfTrainingNow" type="radio" value="@item.Value"> @item.Text<br />
+                }
+                <span asp-validation-for="HoursOfTrainingNow" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -41,12 +48,9 @@
             <div class="form-group">
                 <input type="submit" value="Generera nytt träningsprogram" class="btn btn-primary" />
             </div>
+
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Börja om</a>
 </div>
 
 @section Scripts {

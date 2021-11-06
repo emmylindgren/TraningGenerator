@@ -14,7 +14,6 @@ namespace TraningGenerator.Models
         public string Name { get; set; }
 
         [Required]
-        [Range(1900, 2021)]
         [Display(Name = "Födelseår")]
         public int YearOfBirth { get; set; }
 
@@ -22,10 +21,10 @@ namespace TraningGenerator.Models
         public int Age { get; set; }
 
         [Required]
-        [Display(Name = "Hur mycket tränar du idag?")]
-        public int TrainingNow { get; set; }
+        [Display(Name = "Hur många timmar i veckan tränar du idag?")]
+        public int HoursOfTrainingNow { get; set; }
 
-        public int NewTraining { get; set; }
+        public String NewTraining { get; set; }
 
         [Required]
         [Display(Name = "Vad är din favoritträning?")]
@@ -36,7 +35,7 @@ namespace TraningGenerator.Models
             //lägg till konstruktor här. 
         }
 
-        public void CalculateNewTraining()
+        public void CalculateAge()
         {
             Age = DateTime.Now.Year - YearOfBirth;
             //lägg till beräkning av ny träning här också! 
