@@ -22,13 +22,15 @@ namespace TraningGenerator.Models
 
         [Required]
         [Display(Name = "Hur många timmar i veckan tränar du idag?")]
-        public int HoursOfTrainingNow { get; set; }
-
-        public String NewTraining { get; set; }
+        public string HoursOfTrainingNow { get; set; }
 
         [Required]
         [Display(Name = "Vad är din favoritträning?")]
         public string FavoriteTraining { get; set; }
+
+        public String NewTraining { get; set; }
+
+        public int HoursOfRecommendedTraining { get; set; }
 
         public PersonTrainingInfo()
         {

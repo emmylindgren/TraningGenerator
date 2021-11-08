@@ -19,7 +19,6 @@
 
             <div class="form-group">
                 <label asp-for="YearOfBirth" class="control-label"></label>
-                @*<input asp-for="YearOfBirth" class="form-control" />*@
                 @Html.DropDownListFor(m => m.YearOfBirth,
                     new SelectList(Enumerable.Range(DateTime.Now.Year -100, 101).Reverse()), "Välj år")
                 <span asp-validation-for="YearOfBirth" class="text-danger"></span>

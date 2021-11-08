@@ -1,7 +1,29 @@
-﻿
+﻿@model TraningGenerator.Models.PersonTrainingInfo
+
 @{
-    ViewData["Title"] = "TrainingEvaluation";
+    bool LikedRecommendation = ViewBag.likedRecommendation;
 }
 
-<h1>TrainingEvaluation</h1>
-
+<h3>Utvärdering</h3>
+<div>
+    @if (LikedRecommendation)
+    {
+    <p>
+        Va kul att du gillade vår rekommendation med @Html.DisplayFor(model => model.HoursOfRecommendedTraining) timmar träning i veckan! Du
+        vågade kliva ur din säkra @Html.DisplayFor(model => model.FavoriteTraining)-zon, och istället prova @Html.DisplayFor(model => model.NewTraining).<br />
+        Snyggt jobbat! Hoppas du testar träningsgeneratorn fler gånger!
+    </p>
+    }
+    else
+    {
+    <p>
+        Så tråkigt att höra att du inte riktigt gillade vår träningsrekommendation för dig @Html.DisplayFor(model => model.Name) . Det är bra att ibland
+        våga testa något nytt, istället för favoriten @Html.DisplayFor(model => model.FavoriteTraining) .
+        Men det kanske blev för mycket med @Html.DisplayFor(model => model.HoursOfRecommendedTraining) timmar träning i veckan, eller för lite? <br />
+        Oavsett så ursäktar vi att passen inte passade dig, du kanske kan prova generera igen?
+    </p>
+    }
+</div>
+<div>
+    <a asp-action="Index">Testa generera igen</a>
+</div>

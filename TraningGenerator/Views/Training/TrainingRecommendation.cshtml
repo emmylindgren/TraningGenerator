@@ -7,36 +7,20 @@
 <div>
     <h3>Din genererade rutin</h3>
     <p>Hej @Html.DisplayFor(model => model.Name)!</p>
+    <p>Du är @Html.DisplayFor(model => model.Age) år gammal (i år) och tränar @Html.DisplayFor(model => model.HoursOfTrainingNow) timmar i veckan. Wow! <br /> Du gillar 
+    @Html.DisplayFor(model => model.FavoriteTraining) men det kan vara bra att bryta gamla vanor... Din nya rutin blir därför:</p>
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.YearOfBirth)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.YearOfBirth)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Age)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Age)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.HoursOfTrainingNow)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.HoursOfTrainingNow)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NewTraining)
+        <dt class="col-sm-3">
+            Träningsform
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NewTraining)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.FavoriteTraining)
+        <dt class="col-sm-3">
+            Antal timmar i veckan
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FavoriteTraining)
+            @Html.DisplayFor(model => model.HoursOfRecommendedTraining)
         </dd>
     </dl>
 

@@ -56,25 +56,29 @@ namespace TraningGenerator.Controllers
             pti.YearOfBirth = Convert.ToInt32(col["YearOfBirth"]);
             pti.CalculateAge();
 
-            //Denna är en int av värde från listan, keep it that way? Eller göra om 
-            //till sträng? 
-            pti.HoursOfTrainingNow = Convert.ToInt32(col["HoursOfTrainingNow"]);
+
+            int valueOfHoursOfTraining = Convert.ToInt32(col["HoursOfTrainingNow"]);
+            pti.HoursOfTrainingNow= hoursOfTrainingList[valueOfHoursOfTraining].Text;
+
+            //Calculate new weekly hours of training. 
+            pti.HoursOfRecommendedTraining = valueOfHoursOfTraining + 4;
+            if(valueOfHoursOfTraining == 4)
+            {
+                pti.HoursOfRecommendedTraining = 8;
+            }
+
             int valueOfFavoriteTraining= Convert.ToInt32(col["FavoriteTraining"]);
             pti.FavoriteTraining =trainingList[valueOfFavoriteTraining].Text;
 
+            //Calculate new training that's not the persons favorite. 
             List<int> indexList = new List<int>();
             indexList.AddRange(Enumerable.Range(0, trainingList.Count));
             indexList.Remove(valueOfFavoriteTraining);
 
-            pti.NewTraining = trainingList[(new Random()).Next(1)].Text;
-
-            
+            pti.NewTraining = trainingList[indexList[(new Random()).Next(1)]].Text;
 
             string s = JsonConvert.SerializeObject(pti);
             HttpContext.Session.SetString("ptisession", s);
-
-            //Eventuellt skicka listan här också fast då i viewbag haha?
-            // typ; sen kan du ju välja mellan dessa träningar också... 
 
             return View(pti);
         }
@@ -86,8 +90,18 @@ namespace TraningGenerator.Controllers
             //Annars använder jag den inte? Kan ex skriva : Du gillade inte att bli 
             //rekommenderad gym 3 ggr i veckan? Generera igen så kanske du får simning istället (favoriten) ? 
 
+            string s = HttpContext.Session.GetString("ptisession");
+            PersonTrainingInfo pti = JsonConvert.DeserializeObject<PersonTrainingInfo>(s);
 
-            return View();
+            int GradeOnRecommendation = Convert.ToInt32(col["Grade"]);
+            bool LikedRecommendation = true;
+            if (GradeOnRecommendation != 1)
+            {
+                LikedRecommendation = false;
+            }
+
+            ViewBag.likedRecommendation = LikedRecommendation;
+            return View(pti);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
