@@ -86,10 +86,6 @@ namespace TraningGenerator.Controllers
         [HttpPost]
         public IActionResult TrainingEvaluation(IFormCollection col)
         {
-            //måste jag göra nåt med sessionsvariabeln här kanske? 
-            //Annars använder jag den inte? Kan ex skriva : Du gillade inte att bli 
-            //rekommenderad gym 3 ggr i veckan? Generera igen så kanske du får simning istället (favoriten) ? 
-
             string s = HttpContext.Session.GetString("ptisession");
             PersonTrainingInfo pti = JsonConvert.DeserializeObject<PersonTrainingInfo>(s);
 
