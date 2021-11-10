@@ -34,13 +34,12 @@ namespace TraningGenerator.Models
 
         public PersonTrainingInfo()
         {
-            //lägg till konstruktor här. 
+
         }
 
         public void CalculateAge()
         {
             Age = DateTime.Now.Year - YearOfBirth;
-            //lägg till beräkning av ny träning här också! 
 
         }
     }

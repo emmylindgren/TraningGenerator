@@ -62,10 +62,6 @@ namespace TraningGenerator.Controllers
 
             //Calculate new weekly hours of training. 
             pti.HoursOfRecommendedTraining = valueOfHoursOfTraining + 4;
-            if(valueOfHoursOfTraining == 4)
-            {
-                pti.HoursOfRecommendedTraining = 8;
-            }
 
             int valueOfFavoriteTraining= Convert.ToInt32(col["FavoriteTraining"]);
             pti.FavoriteTraining =trainingList[valueOfFavoriteTraining].Text;
